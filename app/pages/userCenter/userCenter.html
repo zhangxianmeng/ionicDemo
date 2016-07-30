@@ -7,7 +7,7 @@
 <!--</ion-header>-->
 <ion-content padding class="usercenter">
   <ion-avatar class="alignCenter">
-    <img src="{{user.headface}}" alt=""/>
+    <img src="{{user.headface}}" (click)="uploadImage()"  alt="用户头像"/>
     <button block (click)="logout()">注销</button>
   </ion-avatar>
 </ion-content>

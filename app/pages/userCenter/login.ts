@@ -25,7 +25,7 @@ export class Login {
     window.localStorage.clear();
   }
   login(){
-    if(this.user.name){
+    if(this.user.name && this.user.password){
       let loading = Loading.create({
         content:'正在登录...',
         spinner:'dots',
@@ -38,7 +38,7 @@ export class Login {
             this.local.set('username',this.user.name);
             this.local.set('state',1);
             loading.dismiss();//登录进度条隐藏
-            this.viewController.dismiss()//
+            this.viewController.dismiss(this.user.name)////当前也就是自身进行隐藏并将数据传递给用户中心页面
           },error => {
             let toast = Toast.create({
               message: "登录失败！",
@@ -48,10 +48,18 @@ export class Login {
           })
 
     }else{
-      let toast = Toast.create({
-        message: "您输入的用户名格式不正确！",
-        duration:2000
-      });
+      if(!this.user.name){
+        var toast = Toast.create({
+          message: "您输入的用户名格式不正确！",
+          duration:2000
+        });
+      }else{
+        var toast = Toast.create({
+          message: "您输入的密码格式不正确！",
+          duration:2000
+        });
+      }
+
       this.nav.present(toast);
     }
   }

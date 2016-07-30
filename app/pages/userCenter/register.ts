@@ -9,6 +9,6 @@ export class Register {
   constructor(public viewController: ViewController){}
   dismiss(){
     this.viewController.dismiss();
-    alert(1)
+
   }
 }
